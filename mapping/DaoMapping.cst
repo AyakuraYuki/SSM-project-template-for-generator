@@ -1,0 +1,86 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="DaoMapping" %>
+<!-- #include file="../generatorCommon/CommonMethod.cst" -->
+<!-- #include file="../generatorCommon/CommonTable.cst" -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="<%= BaseModulePackage %>.dao.<%= ClassOfTable(SourceTable.Name) %>Dao">
+
+    <sql id="<%= ObjectOfTable(SourceTable.Name) %>Columns">
+        <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+        a.<%= SourceTable.Columns[i].Name %> AS "<%= SourceTable.Columns[i].Name %>"<% if (i != SourceTable.Columns.Count - 1) { %>,
+            <% } %>
+        <% } %>
+
+    </sql>
+
+    <select id="get" parameterType="java.lang.String" resultType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>">
+        SELECT
+        <include refid="<%= ObjectOfTable(SourceTable.Name) %>Columns"/>
+        FROM <%= SourceTable.Name %> a
+        WHERE a.<%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %>=#{<%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %>}
+    </select>
+
+    <select id="findList" parameterType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>" resultType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>">
+        SELECT
+        <include refid="<%= ObjectOfTable(SourceTable.Name) %>Columns"/>
+        FROM <%= SourceTable.Name %> a
+        <where>
+            <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+            <if test="<%= SourceTable.Columns[i].Name %> != null and <%= SourceTable.Columns[i].Name %> != ''">
+                a.<%= SourceTable.Columns[i].Name %> = #{<%= SourceTable.Columns[i].Name %>}
+            </if>
+            <% } %>
+        </where>
+        <choose>
+            <otherwise>
+                ORDER BY a.<%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %> ASC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAll" resultType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>">
+        SELECT
+        <include refid="<%= ObjectOfTable(SourceTable.Name) %>Columns"/>
+        FROM <%= SourceTable.Name %> a
+        <choose>
+            <otherwise>
+                ORDER BY a.<%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %> ASC
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="insert" parameterType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>">
+        INSERT INTO <%= SourceTable.Name %> (
+        <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+        <%= SourceTable.Columns[i].Name %><% if (i != SourceTable.Columns.Count - 1) { %>,
+            <% } %>
+        <% } %>
+
+        ) VALUES (
+        <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+        #{<%= SourceTable.Columns[i].Name %>}<% if (i != SourceTable.Columns.Count - 1) { %>,
+            <% } %>
+        <% } %>
+
+        )
+    </insert>
+
+    <update id="update" parameterType="<%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>">
+        UPDATE <%= SourceTable.Name %> SET
+        <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+        <%= SourceTable.Columns[i].Name %> = #{<%= SourceTable.Columns[i].Name %>}<% if (i != SourceTable.Columns.Count - 1) { %>,
+            <% } %>
+        <% } %>
+
+        WHERE <%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %> = #{<%= SourceTable.PrimaryKey.MemberColumns[0].ToString().Split('.')[1] %>}
+    </update>
+
+    <!-- 
+        报告：删除的mapping配置不建议自动生成。
+        推荐：根据数据库设计，手动配置删除mapping。
+    -->
+
+</mapper>

@@ -1,0 +1,24 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="BaseDao" %>
+<!-- #include file="../generatorCommon/CommonMethod.cst" -->
+package <%= BaseCommonPackage %>.template;
+
+import java.util.List;
+
+/**
+ * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ */
+public interface BaseDao<T> {
+
+	T get(String id);
+
+	List<T> findList(T t);
+
+	List<T> findAll();
+
+	int insert(T t);
+
+	int update(T t);
+
+	int delete(T t);
+
+}

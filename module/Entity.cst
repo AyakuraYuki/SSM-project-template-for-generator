@@ -1,0 +1,27 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
+<!-- #include file="../generatorCommon/CommonMethod.cst" -->
+<!-- #include file="../generatorCommon/CommonTable.cst" -->
+package <%= BaseModulePackage %>.entity;
+
+/**
+ * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Schema: <%= SourceDB.Name %>
+ * Table: <%= SourceTable.Name %>
+ */
+public class <%= ClassOfTable(SourceTable.Name) %> {
+
+    <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+    private <%= GetDataType(SourceTable.Columns[i]) %> <%= SourceTable.Columns[i].Name %>;
+    <% } %>
+    
+    <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+    public void set<%= ToUpperCaseOfFirstCharacter(SourceTable.Columns[i].Name) %>(<%= GetDataType(SourceTable.Columns[i]) %> <%= SourceTable.Columns[i].Name %>) {
+        this.<%= SourceTable.Columns[i].Name %> = <%= SourceTable.Columns[i].Name %>;
+    }
+    
+    public <%= GetDataType(SourceTable.Columns[i]) %> get<%= ToUpperCaseOfFirstCharacter(SourceTable.Columns[i].Name) %>() {
+        return this.<%= SourceTable.Columns[i].Name %>;
+    }
+    
+    <% } %>
+}

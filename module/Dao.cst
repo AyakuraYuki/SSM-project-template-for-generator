@@ -1,0 +1,17 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="Dao" %>
+<!-- #include file="../generatorCommon/CommonMethod.cst" -->
+<!-- #include file="../generatorCommon/CommonTable.cst" -->
+package <%= BaseModulePackage %>.dao;
+
+import <%= BaseCommonPackage %>.annotation.MybatisDao;
+import <%= BaseCommonPackage %>.template.BaseDao;
+import <%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>;
+
+/**
+ * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Schema: <%= SourceDB.Name %>
+ * Table: <%= SourceTable.Name %>
+ */
+@MybatisDao
+public interface <%= ClassOfTable(SourceTable.Name) %>Dao extends BaseDao<<%= ClassOfTable(SourceTable.Name) %>> {
+}

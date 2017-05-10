@@ -1,0 +1,106 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="PublicMethod" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer"%>
+<%@ Property Name="SourceDB" Type="SchemaExplorer.DatabaseSchema" Default="student_manager" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
+<%@ Property Name="BaseModulePackage" Default="module" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
+<%@ Property Name="BaseCommonPackage" Default="common" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
+<script runat="template">
+// 给访问器、修改器用的首字母大写方法
+public string ToUpperCaseOfFirstCharacter(string name)
+{
+    char[] tempChar = name.ToCharArray();
+    string newString = tempChar[0].ToString().ToUpper();
+    for (int i = 1; i < tempChar.Length; i++)
+    {
+        newString += tempChar[i].ToString();
+    }
+    return newString;
+}
+
+// 格式化表名到类名
+public string ClassOfTable(string columnName)
+{
+    char[] tempChar = columnName.ToCharArray();
+    string newString = tempChar[2].ToString().ToUpper();
+    for (int i = 3; i < tempChar.Length; i++)
+    {
+        if (tempChar[i] == '_')
+        {
+            newString += tempChar[++i].ToString().ToUpper();
+            continue;
+        }
+        newString += tempChar[i].ToString();
+    }
+    return newString;
+}
+
+// 格式化表名到对象名
+public string ObjectOfTable(string columnName)
+{
+    char[] tempChar = columnName.ToCharArray();
+    string newString = string.Empty;
+    for (int i = 2; i < tempChar.Length; i++)
+    {
+        if (tempChar[i] == '_')
+        {
+            newString += tempChar[++i].ToString().ToUpper();
+            continue;
+        }
+        newString += tempChar[i].ToString();
+    }
+    return newString;
+}
+
+// 格式化表名到包名
+public string PoPackageOfTable(string columnName)
+{
+    char[] tempChar = columnName.ToCharArray();
+    string newString = tempChar[2].ToString().ToLower();
+    for (int i = 3; i < tempChar.Length; i++)
+    {
+        if (tempChar[i] == '_')
+        {
+            newString += tempChar[++i].ToString().ToUpper();
+            continue;
+        }
+        newString += tempChar[i].ToString();
+    }
+    return newString;
+}
+
+// 读取数据类型定义成员变量类型
+// 注意，这里稳定会报错，因为返回了Date没有指明是java.util.Date还是java.sql.Date
+public string GetDataType(ColumnSchema column)
+{
+    switch (column.DataType)
+    {
+        case DbType.AnsiString: return "String";
+        case DbType.AnsiStringFixedLength: return "String";
+        case DbType.Binary: return "byte[]";
+        case DbType.Boolean: return "boolean";
+        case DbType.Byte: return "byte";
+        case DbType.Currency: return "double";
+        case DbType.Date: return "Date";
+        case DbType.DateTime: return "Date";
+        case DbType.Decimal: return "double";
+        case DbType.Double: return "double";
+        case DbType.Guid: return "String";
+        case DbType.Int16: return "short";
+        case DbType.Int32: return "int";
+        case DbType.Int64: return "long";
+        case DbType.Object: return "Object";
+        case DbType.SByte: return "byte";
+        case DbType.Single: return "float";
+        case DbType.String: return "String";
+        case DbType.StringFixedLength: return "String";
+        case DbType.Time: return "String";
+        case DbType.UInt16: return "short";
+        case DbType.UInt32: return "int";
+        case DbType.UInt64: return "long";
+        case DbType.VarNumeric: return "double";
+        default: return column.NativeType;
+    }
+}
+</script>

@@ -1,0 +1,1 @@
+﻿<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Default="" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>

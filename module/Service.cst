@@ -1,0 +1,49 @@
+﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="Service" %>
+<!-- #include file="../generatorCommon/CommonMethod.cst" -->
+<!-- #include file="../generatorCommon/CommonTable.cst" -->
+package <%= BaseModulePackage %>.service;
+
+import <%= BaseModulePackage %>.dao.<%= ClassOfTable(SourceTable.Name) %>Dao;
+import <%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Schema: <%= SourceDB.Name %>
+ * Table: <%= SourceTable.Name %>
+ */
+@Service("<%= ClassOfTable(SourceTable.Name) %>Service")
+public class <%= ClassOfTable(SourceTable.Name) %>Service {
+
+	@Autowired
+	private <%= ClassOfTable(SourceTable.Name) %>Dao dao;
+
+	public <%= ClassOfTable(SourceTable.Name) %> get(String id) {
+		return dao.get(id);
+	}
+
+	public List<<%= ClassOfTable(SourceTable.Name) %>> findList(<%= ClassOfTable(SourceTable.Name) %> <%= ObjectOfTable(SourceTable.Name) %>) {
+		return dao.findList(<%= ObjectOfTable(SourceTable.Name) %>);
+	}
+
+	public List<<%= ClassOfTable(SourceTable.Name) %>> findAll() {
+		return dao.findAll();
+	}
+
+	public int insert(<%= ClassOfTable(SourceTable.Name) %> <%= ObjectOfTable(SourceTable.Name) %>) {
+		return dao.insert(<%= ObjectOfTable(SourceTable.Name) %>);
+	}
+
+	public int update(<%= ClassOfTable(SourceTable.Name) %> <%= ObjectOfTable(SourceTable.Name) %>) {
+		return dao.update(<%= ObjectOfTable(SourceTable.Name) %>);
+	}
+
+	@Deprecated
+	public int delete(<%= ClassOfTable(SourceTable.Name) %> <%= ObjectOfTable(SourceTable.Name) %>) {
+		return dao.delete(<%= ObjectOfTable(SourceTable.Name) %>);
+	}
+
+}
