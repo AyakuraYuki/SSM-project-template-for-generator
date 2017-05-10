@@ -5,7 +5,7 @@ package <%= BaseCommonPackage %>.template;
 import java.util.List;
 
 /**
- * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
  */
 public interface BaseDao<T> {
 

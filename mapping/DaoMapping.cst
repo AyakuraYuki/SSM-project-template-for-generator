@@ -6,6 +6,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith -->
 <mapper namespace="<%= BaseModulePackage %>.dao.<%= ClassOfTable(SourceTable.Name) %>Dao">
 
     <sql id="<%= ObjectOfTable(SourceTable.Name) %>Columns">

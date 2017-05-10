@@ -1,6 +1,6 @@
 ﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
 <!-- #include file="generatorCommon/CommonMethod.cst" -->
-<!-- #include file="generatorCommon/CommonTable.cst" -->
+<%@ Property Name="OutputPath" Default="D:/output" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Register Name="MyBaseDao" Template="common/BaseDao.cst" MergeProperties="False" ExcludeProperties="" %>
 <%@ Register Name="MyBatisDao" Template="common/MyBatisDaoAnnotation.cst" MergeProperties="False" ExcludeProperties="" %>
 <%@ Register Name="MyEntity" Template="module/Entity.cst" MergeProperties="False" ExcludeProperties="" %>
@@ -9,6 +9,7 @@
 <%@ Register Name="MyDaoMapping" Template="mapping/DaoMapping.cst" MergeProperties="False" ExcludeProperties="" %>
 <script runat="template">
 string basePackage = "edu.bnuz.pmvv";
+string author = "Ayakura Yuki";
 
 public string CommonPackage()
 {
@@ -24,11 +25,13 @@ public void OutputCommonToFile()
 {
     CodeTemplate baseDao = new MyBaseDao();
     baseDao.SetProperty("BaseCommonPackage", CommonPackage());
-    baseDao.RenderToFile("../Generated/common/template/BaseDao.java", true);
+    baseDao.SetProperty("Author", author);
+    baseDao.RenderToFile(OutputPath + "/common/template/BaseDao.java", true);
     
     CodeTemplate myBatisDao = new MyBatisDao();
     myBatisDao.SetProperty("BaseCommonPackage", CommonPackage());
-    myBatisDao.RenderToFile("../Generated/common/annotation/MybatisDao.java", true);
+    myBatisDao.SetProperty("Author", author);
+    myBatisDao.RenderToFile(OutputPath + "/common/annotation/MybatisDao.java", true);
 }
 
 public void OutputModuleToFile(TableSchema table)
@@ -37,25 +40,29 @@ public void OutputModuleToFile(TableSchema table)
     entity.SetProperty("SourceTable", table);
     entity.SetProperty("BaseCommonPackage", CommonPackage());
     entity.SetProperty("BaseModulePackage", ModulePackage(table));
-    entity.RenderToFile("../Generated/module/" + PoPackageOfTable(table.Name) + "/entity/" + ClassOfTable(table.Name) + ".java", true);
+    entity.SetProperty("Author", author);
+    entity.RenderToFile(OutputPath + "/module/" + PoPackageOfTable(table.Name) + "/entity/" + ClassOfTable(table.Name) + ".java", true);
     
     CodeTemplate dao = new MyDao();
     dao.SetProperty("SourceTable", table);
     dao.SetProperty("BaseCommonPackage", CommonPackage());
     dao.SetProperty("BaseModulePackage", ModulePackage(table));
-    dao.RenderToFile("../Generated/module/" + PoPackageOfTable(table.Name) + "/dao/" + ClassOfTable(table.Name) + "Dao.java", true);
+    dao.SetProperty("Author", author);
+    dao.RenderToFile(OutputPath + "/module/" + PoPackageOfTable(table.Name) + "/dao/" + ClassOfTable(table.Name) + "Dao.java", true);
 
     CodeTemplate service = new MyService();
     service.SetProperty("SourceTable", table);
     service.SetProperty("BaseCommonPackage", CommonPackage());
     service.SetProperty("BaseModulePackage", ModulePackage(table));
-    service.RenderToFile("../Generated/module/" + PoPackageOfTable(table.Name) + "/service/" + ClassOfTable(table.Name) + "Service.java", true);
+    service.SetProperty("Author", author);
+    service.RenderToFile(OutputPath + "/module/" + PoPackageOfTable(table.Name) + "/service/" + ClassOfTable(table.Name) + "Service.java", true);
     
     CodeTemplate mapping = new MyDaoMapping();
     mapping.SetProperty("SourceTable", table);
     mapping.SetProperty("BaseCommonPackage", CommonPackage());
     mapping.SetProperty("BaseModulePackage", ModulePackage(table));
-    mapping.RenderToFile("../Generated/mapping/" + PoPackageOfTable(table.Name) + "/" + ClassOfTable(table.Name) + "Dao.xml",true);
+    mapping.SetProperty("Author", author);
+    mapping.RenderToFile(OutputPath + "/module/" + PoPackageOfTable(table.Name) + "/" + ClassOfTable(table.Name) + "Dao.xml",true);
 }
 </script>
 <%

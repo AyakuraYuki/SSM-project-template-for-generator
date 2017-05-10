@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
  */
 @Controller
 @RequestMapping("/<%= ObjectOfTable(SourceTable.Name) %>")

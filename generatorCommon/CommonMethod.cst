@@ -6,6 +6,7 @@
 <%@ Property Name="SourceDB" Type="SchemaExplorer.DatabaseSchema" Default="student_manager" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Property Name="BaseModulePackage" Default="module" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Property Name="BaseCommonPackage" Default="common" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
+<%@ Property Name="Author" Default="codeMonkey" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <script runat="template">
 // 给访问器、修改器用的首字母大写方法
 public string ToUpperCaseOfFirstCharacter(string name)

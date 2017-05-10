@@ -8,7 +8,7 @@ import <%= BaseCommonPackage %>.template.BaseDao;
 import <%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>;
 
 /**
- * Create by Ayakura Yuki on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
+ * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
  * Schema: <%= SourceDB.Name %>
  * Table: <%= SourceTable.Name %>
  */
