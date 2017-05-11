@@ -1,4 +1,4 @@
-﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
 <!-- #include file="generatorCommon/CommonMethod.cst" -->
 <%@ Property Name="OutputPath" Default="D:/output" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Register Name="MyBaseDao" Template="common/BaseDao.cst" MergeProperties="False" ExcludeProperties="" %>
@@ -62,7 +62,7 @@ public void OutputModuleToFile(TableSchema table)
     mapping.SetProperty("BaseCommonPackage", CommonPackage());
     mapping.SetProperty("BaseModulePackage", ModulePackage(table));
     mapping.SetProperty("Author", author);
-    mapping.RenderToFile(OutputPath + "/module/" + PoPackageOfTable(table.Name) + "/" + ClassOfTable(table.Name) + "Dao.xml",true);
+    mapping.RenderToFile(OutputPath + "/mapping/" + PoPackageOfTable(table.Name) + "/" + ClassOfTable(table.Name) + "Dao.xml",true);
 }
 </script>
 <%

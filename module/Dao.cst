@@ -1,4 +1,4 @@
-﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="Dao" %>
+<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Dao" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 package <%= BaseModulePackage %>.dao;

@@ -1,4 +1,4 @@
-﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="BaseDao" %>
+<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="BaseDao" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 package <%= BaseCommonPackage %>.template;
 

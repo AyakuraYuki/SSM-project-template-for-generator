@@ -1,4 +1,4 @@
-﻿<%@ Template Language="C#" TargetLanguage="Java" Encoding="utf-8" Inherits="" Debug="False" Description="DaoMapping" %>
+<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="DaoMapping" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 <?xml version="1.0" encoding="UTF-8"?>
