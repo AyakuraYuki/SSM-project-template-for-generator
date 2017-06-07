@@ -1,0 +1,3 @@
+﻿<%@ Property Name="SourceDB" Type="SchemaExplorer.DatabaseSchema" Default="" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer"%>

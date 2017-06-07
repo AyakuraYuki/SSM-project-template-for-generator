@@ -1,4 +1,4 @@
-<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="DaoMapping" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="DaoMapping" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 <?xml version="1.0" encoding="UTF-8"?>
@@ -30,9 +30,21 @@
         FROM <%= SourceTable.Name %> a
         <where>
             <% for (int i = 0; i < SourceTable.Columns.Count; i++) { %>
+            <% if (SourceTable.Columns[i].Name.Equals("del_flag")) { %>
             <if test="<%= SourceTable.Columns[i].Name %> != null and <%= SourceTable.Columns[i].Name %> != ''">
                 a.<%= SourceTable.Columns[i].Name %> = #{<%= SourceTable.Columns[i].Name %>}
             </if>
+            <% } %>
+            <% else if (GetDataType(SourceTable.Columns[i]).Equals("String")) { %>
+            <if test="<%= SourceTable.Columns[i].Name %> != null and <%= SourceTable.Columns[i].Name %> != ''">
+                a.<%= SourceTable.Columns[i].Name %> LIKE concat('%',#{<%= SourceTable.Columns[i].Name %>},'%')
+            </if>
+            <% } %>
+            <% else { %>
+            <if test="<%= SourceTable.Columns[i].Name %> != null and <%= SourceTable.Columns[i].Name %> != ''">
+                a.<%= SourceTable.Columns[i].Name %> = #{<%= SourceTable.Columns[i].Name %>}
+            </if>
+            <% } %>
             <% } %>
         </where>
         <choose>

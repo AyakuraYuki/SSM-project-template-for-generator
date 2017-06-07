@@ -1,4 +1,4 @@
-<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Service" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Service" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 package <%= BaseModulePackage %>.service;
@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
- * Schema: <%= SourceDB.Name %>
  * Table: <%= SourceTable.Name %>
  */
 @Service("<%= ClassOfTable(SourceTable.Name) %>Service")

@@ -1,5 +1,6 @@
 ﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Entrance" %>
 <!-- #include file="generatorCommon/CommonMethod.cst" -->
+<!-- #include file="generatorCommon/SourceDB.cst" -->
 <%@ Property Name="OutputPath" Default="D:/output" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Register Name="MyBaseDao" Template="common/BaseDao.cst" MergeProperties="False" ExcludeProperties="" %>
 <%@ Register Name="MyBatisDao" Template="common/MyBatisDaoAnnotation.cst" MergeProperties="False" ExcludeProperties="" %>

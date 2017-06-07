@@ -1,11 +1,10 @@
-<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="POJO" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 package <%= BaseModulePackage %>.entity;
 
 /**
  * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
- * Schema: <%= SourceDB.Name %>
  * Table: <%= SourceTable.Name %>
  */
 public class <%= ClassOfTable(SourceTable.Name) %> {

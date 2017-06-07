@@ -1,4 +1,4 @@
-<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Controller" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Controller" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 package <%= BaseModulePackage %>.web;

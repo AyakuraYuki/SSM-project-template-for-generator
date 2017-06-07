@@ -3,7 +3,6 @@
 <%@ Assembly Name="CodeSmith.BaseTemplates" %>
 <%@ Assembly Name="SchemaExplorer" %>
 <%@ Import Namespace="SchemaExplorer"%>
-<%@ Property Name="SourceDB" Type="SchemaExplorer.DatabaseSchema" Default="" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Property Name="BaseModulePackage" Default="module" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Property Name="BaseCommonPackage" Default="common" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>
 <%@ Property Name="Author" Default="codeMonkey" Type="String" Optional="False" Category="Context" OnChanged="" Editor="" EditorBase="" Serializer="" %>

@@ -1,4 +1,4 @@
-<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Dao" %>
+﻿<%@ Template Language="C#" TargetLanguage="Java" ResponseEncoding="utf-8" Inherits="" Debug="False" Description="Dao" %>
 <!-- #include file="../generatorCommon/CommonMethod.cst" -->
 <!-- #include file="../generatorCommon/CommonTable.cst" -->
 package <%= BaseModulePackage %>.dao;
@@ -9,7 +9,6 @@ import <%= BaseModulePackage %>.entity.<%= ClassOfTable(SourceTable.Name) %>;
 
 /**
  * Create by <%= Author %> on <%= DateTime.Now.ToShortDateString() %> via CodeSmith
- * Schema: <%= SourceDB.Name %>
  * Table: <%= SourceTable.Name %>
  */
 @MybatisDao
